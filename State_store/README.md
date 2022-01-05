@@ -6,11 +6,13 @@
 
 - initialize dapr and allow it to config with the docker in your machine by running the command
 
-``` dapr init `` 
-- Verify Dapr version
+``` dapr init ```
+- Verify Dapr version run the command
+
 ``` dapr --version ```
 
-Verify containers are running the dapr instance 
+Verify containers are running the dapr instance run command
+
 ``` docker ps ```
 
 - Expected output 
@@ -26,11 +28,12 @@ CONTAINER ID   IMAGE                    COMMAND                  CREATED        
 
 ``` dapr run --app-id myapp --dapr-http-port 3500 ```
 
-- start the program
+- to start the program run command
+
 ``` python3 post.py ```
 
 
 - send a get request to retrieve data from dapr store
 ``` get.py ```
 ### OR
-![screenshot](http://url/to/screenshot.png)
+![Screenshot](screenshot.png)
