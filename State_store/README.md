@@ -38,3 +38,12 @@ CONTAINER ID   IMAGE                    COMMAND                  CREATED        
 ``` python3 get.py ```
 ### OR
 ![Screenshot](screenshot.png)
+
+- the delete Item item from the dapr store run commmand
+
+``` python3 get.py ```
+
+### OR 
+- send a delete request using postman with the key ``` food ```
+
+![delete](delete.png)
