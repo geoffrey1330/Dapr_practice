@@ -33,7 +33,8 @@ CONTAINER ID   IMAGE                    COMMAND                  CREATED        
 ``` python3 post.py ```
 
 
-- send a get request to retrieve data from dapr store
-``` get.py ```
+- send a get request to retrieve data from dapr store run command
+
+``` python3 get.py ```
 ### OR
 ![Screenshot](screenshot.png)
