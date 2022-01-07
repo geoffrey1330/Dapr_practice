@@ -62,3 +62,16 @@ dapr run --app-id receiver2 --app-protocol grpc --app-port 50059 --components-pa
 dapr run --app-id publisher --app-protocol grpc --components-path ../components python3 app.py
 
 ```
+
+### Cleanup
+
+- The dapr apps can be stopped by calling stop or terminating the process:
+```
+dapr stop --app-id publisher
+dapr stop --app-id receiver
+dapr stop --app-id receiver2
+```
+- For kafka cleanup, run the following code:
+```
+docker-compose -f ./docker-compose-single-kafka.yml down
+```
