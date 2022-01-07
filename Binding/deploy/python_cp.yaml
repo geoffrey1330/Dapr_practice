@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bindings-pythonapp1
+  labels:
+    app: bindingspythonapp1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bindingspythonapp1
+  template:
+    metadata:
+      labels:
+        app: bindingspythonapp1
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "bindings-pythonapp1"
+    spec:
+      containers:
+      - name: pythonapp1
+        image: bindings-pythonapp1:latest
+        imagePullPolicy: Never

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bindings-pythonapp3
+  namespace: default
+  labels:
+    app: bindings-pythonapp3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bindings-pythonapp3
+  template:
+    metadata:
+      labels:
+        app: bindings-pythonapp3
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "pythonapp3"
+        dapr.io/app-protocol: "grpc"
+        dapr.io/app-port: "50059"
+        dapr.io/config: "serverconfig"
+    spec:
+      containers:
+      - name: pythonapp3
+        image: bindings-pythonapp3:latest
+        ports:
+        - containerPort: 50059
+        imagePullPolicy: Never

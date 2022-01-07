@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bindings-nodeapp2
+  labels:
+    app: bindingsnodeapp2
+spec:
+  selector:
+    app: bindingsnodeapp2
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bindings-nodeapp2
+  labels:
+    app: bindingsnodeapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bindingsnodeapp2
+  template:
+    metadata:
+      labels:
+        app: bindingsnodeapp2
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "bindings-nodeapp2"
+        dapr.io/app-port: "3000"
+    spec:
+      containers:
+      - name: nodeapp2
+        image: bindings-nodeapp2:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Never

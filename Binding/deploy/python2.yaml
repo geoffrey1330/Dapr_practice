@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bindings-pythonapp2
+  labels:
+    app: bindingspythonapp2
+spec:
+  selector:
+    app: bindingspythonapp2
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bindings-pythonapp2
+  labels:
+    app: bindingspythonapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bindingspythonapp2
+  template:
+    metadata:
+      labels:
+        app: bindingspythonapp2
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "bindings-pythonapp2"
+        dapr.io/app-port: "3000"
+    spec:
+      containers:
+      - name: pythonapp2
+        image: bindings-pythonapp2:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Never

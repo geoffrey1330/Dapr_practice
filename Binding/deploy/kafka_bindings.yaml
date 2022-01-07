@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: testpythonapps
+spec:
+  type: bindings.kafka
+  version: v1
+  metadata:
+  # Kafka broker connection setting
+  - name: brokers
+    value: 157.230.219.54:9092
+  # consumer configuration: topic and consumer group
+  - name: topics
+    value: testConsumer
+  - name: consumerGroup
+    value: testgroup1
+  # publisher configuration: topic
+  - name: publishTopic
+    value: testProducer
+  - name: authRequired
+    value: "false"
