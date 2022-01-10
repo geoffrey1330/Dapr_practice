@@ -40,7 +40,7 @@ e9fc6cf63c71   bitnami/kafka:latest       "/opt/bitnami/script…"   5 days ago 
 ### Start Receiver (expose gRPC server receiver on port 3000)
 - open another terminal and move into the Binding folder
 ```
-cd python2
+cd pythonapp2
 
 dapr run --app-id receiver --app-protocol grpc --app-port 3000 --components-path ../components python3 app.py
 ```
@@ -49,7 +49,7 @@ dapr run --app-id receiver --app-protocol grpc --app-port 3000 --components-path
 
 - open another terminal and move into the Binding folder
 ```
-cd python3
+cd pythonapp3
 
 dapr run --app-id receiver2 --app-protocol grpc --app-port 50059 --components-path ../components python3 app.py
 
@@ -59,6 +59,7 @@ dapr run --app-id receiver2 --app-protocol grpc --app-port 50059 --components-pa
 - open another terminal and move into the Binding folder
 
 ```
+cd pythonapp
 dapr run --app-id publisher --app-protocol grpc --components-path ../components python3 app.py
 
 ```
